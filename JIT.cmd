@@ -11,7 +11,7 @@ set file_height=
 set file_quality=
 set file_loop=0
 :: file selector
-set positiion=0
+set position=0
 set check_input=0
 set check_output=0
 set check_dir=0
@@ -20,6 +20,10 @@ set check_width=0
 set check_height=0
 set check_quality=0
 set check_loop=0
+:: assembly
+set 
+
+
 :: misc
 set app_name=Joso's Image Toolkit
 
@@ -68,8 +72,11 @@ if %errorlevel% == 3 goto assembly
 if %errorlevel% == 2 goto apng_assembly
 if %errorlevel% == 1 goto apng_gif2apng
 exit 
-::
+
+
 :apng_assembly
+
+
 :apng_gif2apng
 
 
@@ -90,30 +97,35 @@ if %errorlevel% == 1 goto gif_vid2gif
 exit
 ::
 :gif_vid2gif
+
+
 :gif_compile
 
 
 :selector
-%check_input%
-%check_output%
-%check_dir%
-%check_framerate%
-%check_width%
-%check_height%
-%check_quality%
-%check_loop%
+if %check_input% == 1 set /P file_input= input filename:
+if %check_output% == 1 set /P file_output= output filename:
+if %check_dir% == 1 set /P file_dir= input directory:
+if %check_framerate% == 1 set /P file_framerate= output framerate:
+if %check_width% == 1 set /P file_width= output width:
+if %check_height% == 1 set /P file_height= output height:
+if %check_quality% == 1 set /P file_quality= conversion quality (1-100):
+if %check_loop% == 1 echo merp :3
+::
+choice /C YN /M "correct?"
+if %errorlevel% == 2 goto selector
+if %errorlevel% == 1 goto %position%
+pause
 
-
-set check_input=0
-set check_output=0
-set check_dir=0
-set check_framerate=0
-set check_width=0
-set check_height=0
-set check_quality=0
-set check_loop=0
 :assembly
+
 
 :disassembly
 
+
+:cleanup
+cls
+if %clean% == 1 del /Q %~dp0\frames\temp_frames\*.png
+if %clean_dir% == 1 del /Q %~dp0\frames\%file_dir%\*.png && rmdir /Q %~dp0\frames\%file_dir%
+goto main_menu
 exit
