@@ -10,20 +10,6 @@ set file_width=
 set file_height=
 set file_quality=
 set file_loop=0
-:: file selector
-set position=0
-set check_input=0
-set check_output=0
-set check_dir=0
-set check_framerate=0
-set check_width=0
-set check_height=0
-set check_quality=0
-set check_loop=0
-:: assembly
-set 
-
-
 :: misc
 set app_name=Joso's Image Toolkit
 
@@ -91,36 +77,16 @@ echo ---------------
 ::
 choice /C 12345
 if %errorlevel% == 4 goto main_menu
-if %errorlevel% == 3 goto assembly 
+if %errorlevel% == 3 goto gif_compile 
 if %errorlevel% == 2 goto disassembly
 if %errorlevel% == 1 goto gif_vid2gif
 exit
-::
+
+
 :gif_vid2gif
 
 
 :gif_compile
-
-
-:selector
-if %check_input% == 1 set /P file_input= input filename:
-if %check_output% == 1 set /P file_output= output filename:
-if %check_dir% == 1 set /P file_dir= input directory:
-if %check_framerate% == 1 set /P file_framerate= output framerate:
-if %check_width% == 1 set /P file_width= output width:
-if %check_height% == 1 set /P file_height= output height:
-if %check_quality% == 1 set /P file_quality= conversion quality (1-100):
-if %check_loop% == 1 echo merp :3
-::
-choice /C YN /M "correct?"
-if %errorlevel% == 2 goto selector
-if %errorlevel% == 1 goto %position%
-pause
-
-:assembly
-
-
-:disassembly
 
 
 :cleanup
