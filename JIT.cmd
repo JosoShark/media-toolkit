@@ -64,7 +64,20 @@ exit
 
 
 :apng_gif2apng
-
+cls && cd %~dp0\output && echo use [TAB] to select && dir
+set /P file_input= input file:
+set /P file_output= output filename:
+cd %~dp0
+cls
+echo input: %file_input%
+echo output: %file_output%
+echo -----------------------------
+choice /C YN /M "correct?" 
+if %errorlevel% == 2 goto apng_convert
+cls
+gif2apng.exe %~dp0output\%file_input% %~dp0output\%file_output%
+goto main_menu
+exit
 
 :gif_menu
 cd %~dp0 && cls && title %app_name% - GIF Tools
