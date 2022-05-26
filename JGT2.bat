@@ -1,7 +1,6 @@
 @echo off
 
 :setup
-set window_title="Joso's Image Toolset" 
 set file_input=
 set file_output=
 set file_framerate=-1
