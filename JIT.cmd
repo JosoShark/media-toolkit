@@ -1,1 +1,0 @@
-<Rewrite of whole script>
