@@ -1,5 +1,3 @@
-# media-toolkit
+# Media Toolkit
 
-heavily WIP currently
-
-(ps: install [imagemagick](https://imagemagick.org/script/download.php) while you're at it)
+> full rewrite in progress, not much here yet
