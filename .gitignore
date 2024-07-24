@@ -1,4 +1,4 @@
 .gitignore
 scribble
 ideas
-media/frames/
+media/frames/*
